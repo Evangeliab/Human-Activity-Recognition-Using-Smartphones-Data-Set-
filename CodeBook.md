@@ -8,45 +8,45 @@ Subsequently, the body linear acceleration and angular velocity were derived in 
 Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. (Note the 'f' to indicate frequency domain signals). 
 
 
--These signals were used to estimate the variables for each pattern:  
+- These signals were used to estimate the variables for each pattern:  
    - '-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
    - Each on of them is numeric.
    - Values: bounded within [-1,1]
    - Summary choice: the average for each activity and each subject.
 
--tBodyAcc-XYZ
--tGravityAcc-XYZ
--tBodyAccJerk-XYZ
--tBodyGyro-XYZ
--tBodyGyroJerk-XYZ
--tBodyAccMag
--tGravityAccMag
--tBodyAccJerkMag
--tBodyGyroMag
--tBodyGyroJerkMag
--fBodyAcc-XYZ
--fBodyAccJerk-XYZ
--fBodyGyro-XYZ
--fBodyAccMag
--fBodyAccJerkMag
--fBodyGyroMag
--fBodyGyroJerkMag
+- tBodyAcc-XYZ
+- tGravityAcc-XYZ
+- tBodyAccJerk-XYZ
+- tBodyGyro-XYZ
+- tBodyGyroJerk-XYZ
+- tBodyAccMag
+- tGravityAccMag
+- tBodyAccJerkMag
+- tBodyGyroMag
+- tBodyGyroJerkMag
+- fBodyAcc-XYZ
+- fBodyAccJerk-XYZ
+- fBodyGyro-XYZ
+- fBodyAccMag
+- fBodyAccJerkMag
+- fBodyGyroMag
+- fBodyGyroJerkMag
 
 
 
--The set of variables that were estimated from these signals are: 
+- The set of variables that were estimated from these signals are: 
 
-  *mean(): Mean value
-  *std(): Standard deviation
+  - mean(): Mean value
+  - std(): Standard deviation
 
 
 
-*Other variables:
-  -subjectId: An identifier of the subject who carried out the experiment.
+- Other variables:
+  - subjectId: An identifier of the subject who carried out the experiment.
                class: integer
 			   number of volunteers: 30
 			   
-  -activity: Each person performed six activities wearing a smartphone (Samsung Galaxy S II) on the waist.
+  - activity: Each person performed six activities wearing a smartphone (Samsung Galaxy S II) on the waist.
               class: character
 			  values: WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING
 
