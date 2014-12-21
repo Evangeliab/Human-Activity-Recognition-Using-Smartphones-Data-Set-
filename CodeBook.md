@@ -34,7 +34,7 @@ Finally a Fast Fourier Transform (FFT) was applied to some of these signals prod
 
 ## These signals were used to estimate the variables for each pattern:  
  - '-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
- - Each on of them is **numeric**.
+ - Each on of them is **class**: **numeric**.
  - **Values** : bounded within **[-1,1]**
  - **Summary choice** : **the average for each activity and each subject**.
 
@@ -67,14 +67,14 @@ Finally a Fast Fourier Transform (FFT) was applied to some of these signals prod
 
 ## Other variables:
   - subjectId:
-               - An identifier of the subject who carried out the experiment.
-               - **class**: **integer**
-			   - **values** (number of volunteers): **1-30**
+    - An identifier of the subject who carried out the experiment.
+    - **Class**: **integer**
+	- **Values** (number of volunteers): **1-30**
 			   
   - activity: 
-              - Each person performed six activities wearing a smartphone (Samsung Galaxy S II) on the waist.
-              - **class**: **character**
-			  - **values**: **WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING**
+    - Each person performed six activities wearing a smartphone (Samsung Galaxy S II) on the waist.
+    - **Class**: **character**
+	- **Values**: **WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING**
 
 			  
 			  
