@@ -9,11 +9,12 @@ Finally a Fast Fourier Transform (FFT) was applied to some of these signals prod
 
 
 - These signals were used to estimate the variables for each pattern:  
-   - '-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
-   - Each on of them is numeric.
-   - Values: bounded within [-1,1]
-   - Summary choice: the average for each activity and each subject.
+   * '-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
+   * Each on of them is numeric.
+   * Values: bounded within [-1,1]
+   * Summary choice: the average for each activity and each subject.
 
+   
  - tBodyAcc-XYZ
  - tGravityAcc-XYZ
  - tBodyAccJerk-XYZ
