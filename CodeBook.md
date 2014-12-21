@@ -1,11 +1,13 @@
 ##CODE BOOK - Human Activity Recognition Using Smartphones Data Set 
 ===================================================================
 
-An introduction about this data:
+About the data:
 ================================
-The tidy data set called **averaged_data** that presented below obtained by a row data from [here] (http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones) .
+  - The tidy data set called **averaged_data** that presented below obtained by a row data from [here] (http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones) .
+  - The dimension of this tidy data set is: 180 rows/observation & 68 columns/variables.
 
 Having saved the raw data folder "UCI HAR Dataset" in my working directory, I peformed the following:
+======================================================================================================
   1. From that folder the labels.txt, features.txt, X_test.txt, y_test.txt, subject_test.txt and the other 3 of train folder, read into R by using read.table.
   2. Files of test folder merged together. Same for train folder, and then all **merged** together saved in a variable called **data**.
   3. The so far data is given **descriptive variable names** . The first 2 columns are called "subjectId", "label" ,the rest obtained by extracting them from features file and using the make.names function.
@@ -30,9 +32,9 @@ Finally a Fast Fourier Transform (FFT) was applied to some of these signals prod
 
 - These signals were used to estimate the variables for each pattern:  
     '-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
-    Each on of them is numeric.
-    Values: bounded within [-1,1]
-    Summary choice: the average for each activity and each subject.
+    Each on of them is **numeric**.
+    **Values** : bounded within [-1,1]
+    **Summary choice** : the average for each activity and each subject.
 
    
  - tBodyAcc-XYZ
@@ -64,12 +66,12 @@ Finally a Fast Fourier Transform (FFT) was applied to some of these signals prod
 
 - Other variables:
   - subjectId: An identifier of the subject who carried out the experiment.
-               class: integer
-			   number of volunteers: 30
+               class: **integer**
+			   number of volunteers: **1-30**
 			   
   - activity: Each person performed six activities wearing a smartphone (Samsung Galaxy S II) on the waist.
-              class: character
-			  values: WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING
+              class: **character**
+			  values: **WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING***
 
 			  
 			  
