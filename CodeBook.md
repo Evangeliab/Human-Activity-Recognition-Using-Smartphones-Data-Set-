@@ -11,11 +11,13 @@
 
   1. From that folder the labels.txt, features.txt, X_test.txt, y_test.txt, subject_test.txt and the other 3 of train folder, read into R by using read.table.
   2. Files of test folder merged together (with cbind). The same for train folder, and then all **merged** together (with rbind) saved in a variable called **data**.
-  3. The so far data is given **descriptive variable names**: The first 2 columns are called "subjectId", "label" ,the rest obtained by extracting them from features file and using the make.names function.
+  3. The so far data is given **descriptive variable names:** The first 2 columns are called "subjectId", "label" ,the rest obtained by extracting them from features file and using the make.names function.
   4. **Descriptive activity names** used to name the activities in the data set, by creating a new column "activity" with values specified from the values of label column.
   5. **The measurements on the mean and standard deviation for each measurement extracted** by using: the grep function, then extracted only the first 2 column & the column names containing "mean" or "s.d".Also, by using select from dplyr package, columns that contains "angle" or "meanFreq" removed. The so far data is called **extracted_data2** .
   6. By using **arrange** from the same package, the data set ordered first based on subjectId column, and then activity's.Now, this data is called **complete_data** .
-  6. This data **grouped by** subjectId and activity. Then, using summarise_each function the data **summarized** by calculating the mean for each column for each activity and each subjectId, except the first 2.Now, this data is called **averaged_data** .
+  7. This data **grouped by** subjectId and activity. Then, using summarise_each function the data **summarized** by calculating the mean for each column for each activity and each subjectId, except the first 2.Now, this data is called **averaged_data** .
+  
+  - The **run_analysis.R** script contains **comments** and the code for the described analysis. 
 
   
  
@@ -33,8 +35,8 @@ Finally a Fast Fourier Transform (FFT) was applied to some of these signals prod
 ## These signals were used to estimate the variables for each pattern:  
  - '-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
  - Each on of them is **numeric**.
- - **Values** : bounded within [-1,1]
- - **Summary choice** : the average for each activity and each subject.
+ - **Values** : bounded within **[-1,1]**
+ - **Summary choice** : **the average for each activity and each subject**.
 
    
   - tBodyAcc-XYZ
@@ -64,13 +66,15 @@ Finally a Fast Fourier Transform (FFT) was applied to some of these signals prod
 
 
 ## Other variables:
-  - subjectId: - An identifier of the subject who carried out the experiment.
-               - class: **integer**
-			   - values (number of volunteers): **1-30**
+  - subjectId:
+               - An identifier of the subject who carried out the experiment.
+               - **class**: **integer**
+			   - **values** (number of volunteers): **1-30**
 			   
-  - activity: - Each person performed six activities wearing a smartphone (Samsung Galaxy S II) on the waist.
-              - class: **character**
-			  - values: **WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING**
+  - activity: 
+              - Each person performed six activities wearing a smartphone (Samsung Galaxy S II) on the waist.
+              - **class**: **character**
+			  - **values**: **WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING**
 
 			  
 			  
