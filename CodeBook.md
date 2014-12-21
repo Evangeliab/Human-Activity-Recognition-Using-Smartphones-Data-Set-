@@ -14,23 +14,23 @@ Finally a Fast Fourier Transform (FFT) was applied to some of these signals prod
    - Values: bounded within [-1,1]
    - Summary choice: the average for each activity and each subject.
 
-- tBodyAcc-XYZ
-- tGravityAcc-XYZ
-- tBodyAccJerk-XYZ
-- tBodyGyro-XYZ
-- tBodyGyroJerk-XYZ
-- tBodyAccMag
-- tGravityAccMag
-- tBodyAccJerkMag
-- tBodyGyroMag
-- tBodyGyroJerkMag
-- fBodyAcc-XYZ
-- fBodyAccJerk-XYZ
-- fBodyGyro-XYZ
-- fBodyAccMag
-- fBodyAccJerkMag
-- fBodyGyroMag
-- fBodyGyroJerkMag
+ - tBodyAcc-XYZ
+ - tGravityAcc-XYZ
+ - tBodyAccJerk-XYZ
+ - tBodyGyro-XYZ
+ - tBodyGyroJerk-XYZ
+ - tBodyAccMag
+ - tGravityAccMag
+ - tBodyAccJerkMag
+ - tBodyGyroMag
+ - tBodyGyroJerkMag
+ - fBodyAcc-XYZ
+ - fBodyAccJerk-XYZ
+ - fBodyGyro-XYZ
+ - fBodyAccMag
+ - fBodyAccJerkMag
+ - fBodyGyroMag
+ - fBodyGyroJerkMag
 
 
 
