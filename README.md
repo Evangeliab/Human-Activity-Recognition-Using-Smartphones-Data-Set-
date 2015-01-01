@@ -7,9 +7,9 @@ The purpose of this project is to demonstrate the ability to collect, work with,
 
 ## In this repo you will find the following:
 
-   - an R script for performing the analysis (that ends up with averaged_dataset.txt file), called **run_analysis.R** (contains comments) found [here] (https://github.com/Evangeliab/Human-Activity-Recognition-Using-Smartphones-Data-Set-/blob/master/run_analysis.R) . 
-   - a **code book** that describes the variables, the data, and any transformations or work that it's performed to clean up the data.It's found [here] (https://github.com/Evangeliab/Human-Activity-Recognition-Using-Smartphones-Data-Set-/blob/master/CodeBook.md) .
-   - the actual averaged_dataset.txt output file.
+   - an R script for performing the analysis (that ends up with averaged_dataset.txt file), called **run_analysis.R** (contains comments). 
+   - a **code book** that describes the variables, the data, and any transformations or work that it's performed to clean up the data.
+   - the actual **averaged_dataset.txt** output file.
 
 ## How to reproduce the **averaged_dataset** tidy data set given the raw data folder **UCI HAR Dataset**:
 
