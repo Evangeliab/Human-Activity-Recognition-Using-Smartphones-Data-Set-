@@ -1,5 +1,6 @@
 library(dplyr)
 
+# Loading the data sets.
 activity_labels<-read.table("./UCI HAR Dataset/activity_labels.txt")        
 features<-read.table("./UCI HAR Dataset/features.txt")
 
@@ -11,24 +12,33 @@ X_train<-read.table("./UCI HAR Dataset/train/X_train.txt")
 y_train<-read.table("./UCI HAR Dataset/train/y_train.txt")
 subject_train<-read.table("./UCI HAR Dataset/train/subject_train.txt")
 
-namesOfCol<-as.character(factor(features$V2))  ##  a series of names of 2nd column of feature data set, tranformed into factors and then characters.
-all_test<-cbind(subject_test, y_test, X_test)
-all_train<-cbind(subject_train, y_train, X_train)
-data<-rbind(all_test, all_train)     ##  merges the train and test sets to create one data set.
+all_test<-cbind(subject_test, label=y_test, X_test)
+all_train<-cbind(subject_train, label=y_train, X_train)
+data<-rbind(all_test, all_train)     # merges the train and test sets to create one data set.
 
-colnames(data)[1:563] <- c("subjectId","label", make.names(namesOfCol)) ##  names the columns of the data set.
-data$activity[data$label == 1] <- "WALKING"  ##  creates a new column "activity" with values specified from the values of label column.
-data$activity[data$label == 2] <- "WALKING_UPSTAIRS"
-data$activity[data$label == 3] <- "WALKING_DOWNSTAIRS"
-data$activity[data$label == 4] <- "SITTING"
-data$activity[data$label == 5] <- "STANDING"
-data$activity[data$label == 6] <- "LAYING"
+# replace the 2nd column with descriptive names.
+data[,2] <- factor(data[,2]) ; levels(data[,2]) <- activity_labels$V2
+# or: data$activity[data[,2] == 1] <- "WALKING"; data$activity[data[,2] == 2] <- "WALKING_UPSTAIRS"; etc #
 
-matches<-grep("mean|std", make.names(namesOfCol), ignore.case = T, value=T) ## a character vector containing names "mean" or "s.d".
-extracted_data<-data[,c("subjectId","activity",matches)] ## Extracts only the first 2 column & the column names containing "mean" or "s.d".
-extracted_data2<-select(extracted_data,-(49:51),-(58:60),-(67:69),-72,-75,-78,-(81:88)) ## removes columns that contains "angle" or "meanFreq".Now, it's with only the measurements on the mean and standard deviation for each measurement.
+data<-data[,c(1,2,grep("(mean|std)[^meanF]", features$V2)+2)] # extracts only the first 2 column & the column names containing "mean" or "s.d", but not "angle" or "meanFreq".
 
-complete_data<-arrange(extracted_data2, subjectId, activity) ## orders the data set first based on subjectId column, and then activity's. 
+colnames<-grep("(mean|std)[^meanF]", make.names(features$V2),value=T) # a character vector now with the same names.
+colnames<-gsub("\\.","",colnames)
+colnames<-sub("^t", "time",colnames)
+colnames<-sub("^f", "freq",colnames)
+colnames<-sub("BodyBody", "Body",colnames)  
+colnames<-sub("mean", "Mean",colnames) ; colnames<-sub("std", "Std",colnames) 
 
-grouped_data<-group_by(complete_data, subjectId, activity) ## groups this data 
-averaged_data<-summarise_each(grouped_data, funs(mean), -subjectId, -activity) ## summarize the data by calculating the mean for each column, except the first 2.
+# names the columns of the data set.
+colnames(data)[1:2] <- c("subjectId", "activity")  
+colnames(data)[3:ncol(data)] <- c(colnames)
+
+data<-arrange(data, subjectId, activity) # orders the data set first based on subjectId, and then activity column. 
+
+grouped_data<-group_by(data, subjectId, activity) # groups this data by the first 2 variables. 
+averaged_dataset<-summarise_each(grouped_data, funs(mean), -subjectId, -activity) # summarize the data by calculating the mean for each column, except the first 2.
+
+# Cleaning up temp variables
+rm(activity_labels, features, X_test, y_test, subject_test, X_train, y_train, subject_train, all_test, all_train,data, columnsToExtract, colnames, grouped_data)
+
+write.table(averaged_dataset,file="averaged_dataset.txt",row.name=FALSE)

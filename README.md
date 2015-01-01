@@ -16,8 +16,7 @@ The purpose of this project is to demonstrate the ability to collect, work with,
  1. Make sure that you saved the raw data folder "UCI HAR Dataset" and the run_analysis.R script in your working directory.
  2. Open Rstudio and transfer the run_analysis.R there.
  3. Run the code of run_analysis.R, by clicking **Ctrl+A** to select the whole code, and then the **Run or Source** button. 
- 4. When the process stop, **it won't print anything to your console as I didn't include the print function in the end of the code**, becauce the dimension of the data is big. So you will get a number of data names in your environment up-right. The only one that you should be interested is called **averaged_data**.
- 5. If you want to print to your console a part of this data frame, you can by subsetting e.g: averaged_dataset[1:6, 1:10] 
+ 4. When the process stop, the **averaged_dataset.txt** file will be saved in your working directory, and the **averaged_dataset** tidy data set will be appeared in your environment.
  
- - Also you can save the averaged_dataset using write.table(averaged_dataset,file="averaged_dataset.txt",row.name=FALSE) and read it with: read.table("averaged_dataset.txt",header = T).
+ - Also you can read the averaged_dataset with: read.table("averaged_dataset.txt",header = T).
  

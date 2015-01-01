@@ -11,11 +11,11 @@
 
   1. From that folder the labels.txt, features.txt, X_test.txt, y_test.txt, subject_test.txt and the other 3 of train folder, read into R by using read.table.
   2. Files of test folder merged together (with cbind). The same for train folder, and then all **merged** together (with rbind) saved in a variable called **data**.
-  3. The so far data is given **descriptive variable names:** The first 2 columns are called "subjectId", "label" ,the rest obtained by extracting them from features file and using the make.names function.
-  4. **Descriptive activity names** used to name the activities in the data set, by creating a new column "activity" with values specified from the values of label column.
-  5. **The measurements on the mean and standard deviation for each measurement extracted** by using: the grep function, then extracted only the first 2 column & the column names containing "mean" or "s.d".Also, by using select from dplyr package, columns that contains "angle" or "meanFreq" removed. The so far data is called **extracted_data2** .
-  6. By using **arrange** from the same package, the data set ordered first based on subjectId column, and then activity's.Now, this data is called **complete_data** .
-  7. This data **grouped by** subjectId and activity. Then, using summarise_each function the data **summarized** by calculating the mean for each column for each activity and each subjectId, except the first 2.Now, this data is called **averaged_data** .
+  3. **Descriptive activity names** used to name the activities in the data set, by converting the activity column into a factor and renaming the levels according to the names within our activity_labels set.
+  4. **The measurements on the mean and standard deviation for each measurement extracted** by using: the grep function, and extracting only the first 2 column & the column names containing "mean" or "s.d", but not "angle" or "meanFreq".
+  5. The so far data is given **descriptive variable names:** The first 2 columns are called "subjectId", "activity".The rest (obtained by extracting them from features file) was renamed by replacing the 'f','t','mean','std' with 'freq','time','Mean' and 'Std' respectively, removing parenthesis and periods, and correcting the "BodyBody" typo for the selected columns. 
+  6. By using **arrange** from the same package, the data set ordered first based on subjectId, and then activity column.
+  7. The data **grouped by** subjectId and activity. Then, using summarise_each function the data **summarized** by calculating the mean for each column for each activity and each subjectId, except the first 2.Now, this data is called **averaged_data**,and was written out to the "averaged_data.txt" file.
   
   - The **run_analysis.R** script contains **comments** and the code for the described analysis. 
 
@@ -73,81 +73,79 @@ Finally a Fast Fourier Transform (FFT) was applied to some of these signals prod
 			   
   - activity: 
     - Each person performed six activities wearing a smartphone (Samsung Galaxy S II) on the waist.
-    - **Class**: **character**
-	- **Values**: **WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING**
+    - **Class**: **factor**
+	- **Levels**: **WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING**
 
 			  
 			  
 ## The complete list of variables of the dataset:
 
-subjectId
-activity
-tBodyAcc.mean...X
-tBodyAcc.mean...Y
-tBodyAcc.mean...Z
-tBodyAcc.std...X
-tBodyAcc.std...Y
-tBodyAcc.std...Z
-tGravityAcc.mean...X
-tGravityAcc.mean...Y
-tGravityAcc.mean...Z
-tGravityAcc.std...X
-tGravityAcc.std...Y
-tGravityAcc.std...Z
-tBodyAccJerk.mean...X
-tBodyAccJerk.mean...Y
-tBodyAccJerk.mean...Z
-tBodyAccJerk.std...X
-tBodyAccJerk.std...Y
-tBodyAccJerk.std...Z
-tBodyGyro.mean...X
-tBodyGyro.mean...Y
-tBodyGyro.mean...Z
-tBodyGyro.std...X
-tBodyGyro.std...Y
-tBodyGyro.std...Z
-tBodyGyroJerk.mean...X
-tBodyGyroJerk.mean...Y
-tBodyGyroJerk.mean...Z
-tBodyGyroJerk.std...X
-tBodyGyroJerk.std...Y
-tBodyGyroJerk.std...Z
-tBodyAccMag.mean..
-tBodyAccMag.std..
-tGravityAccMag.mean..
-tGravityAccMag.std..
-tBodyAccJerkMag.mean..
-tBodyAccJerkMag.std..
-tBodyGyroMag.mean..
-tBodyGyroMag.std..
-tBodyGyroJerkMag.mean..
-tBodyGyroJerkMag.std..
-fBodyAcc.mean...X
-fBodyAcc.mean...Y
-fBodyAcc.mean...Z
-fBodyAcc.std...X
-fBodyAcc.std...Y
-fBodyAcc.std...Z
-fBodyAccJerk.mean...X
-fBodyAccJerk.mean...Y
-fBodyAccJerk.mean...Z
-fBodyAccJerk.std...X
-fBodyAccJerk.std...Y
-fBodyAccJerk.std...Z
-fBodyGyro.mean...X
-fBodyGyro.mean...Y
-fBodyGyro.mean...Z
-fBodyGyro.std...X
-fBodyGyro.std...Y
-fBodyGyro.std...Z
-fBodyAccMag.mean..
-fBodyAccMag.std..
-fBodyBodyAccJerkMag.mean..
-fBodyBodyAccJerkMag.std..
-fBodyBodyGyroMag.mean..
-fBodyBodyGyroMag.std..
-fBodyBodyGyroJerkMag.mean..
-fBodyBodyGyroJerkMag.std..
-
-
+* subjectId
+* activity
+* timeBodyAccMeanX
+* timeBodyAccMeanY
+* timeBodyAccMeanZ
+* timeBodyAccStdX
+* timeBodyAccStdY
+* timeBodyAccStdZ
+* timeGravityAccMeanX
+* timeGravityAccMeanY
+* timeGravityAccMeanZ
+* timeGravityAccStdX
+* timeGravityAccStdY
+* timeGravityAccStdZ
+* timeBodyAccJerkMeanX
+* timeBodyAccJerkMeanY
+* timeBodyAccJerkMeanZ
+* timeBodyAccJerkStdX
+* timeBodyAccJerkStdY
+* timeBodyAccJerkStdZ
+* timeBodyGyroMeanX
+* timeBodyGyroMeanY
+* timeBodyGyroMeanZ
+* timeBodyGyroStdX
+* timeBodyGyroStdY
+* timeBodyGyroStdZ
+* timeBodyGyroJerkMeanX
+* timeBodyGyroJerkMeanY
+* timeBodyGyroJerkMeanZ
+* timeBodyGyroJerkStdX
+* timeBodyGyroJerkStdY
+* timeBodyGyroJerkStdZ
+* timeBodyAccMagMean
+* timeBodyAccMagStd
+* timeGravityAccMagMean
+* timeGravityAccMagStd
+* timeBodyAccJerkMagMean
+* timeBodyAccJerkMagStd
+* timeBodyGyroMagMean
+* timeBodyGyroMagStd
+* timeBodyGyroJerkMagMean
+* timeBodyGyroJerkMagStd
+* freqBodyAccMeanX
+* freqBodyAccMeanY
+* freqBodyAccMeanZ
+* freqBodyAccStdX
+* freqBodyAccStdY
+* freqBodyAccStdZ
+* freqBodyAccJerkMeanX
+* freqBodyAccJerkMeanY
+* freqBodyAccJerkMeanZ
+* freqBodyAccJerkStdX
+* freqBodyAccJerkStdY
+* freqBodyAccJerkStdZ
+* freqBodyGyroMeanX
+* freqBodyGyroMeanY
+* freqBodyGyroMeanZ
+* freqBodyGyroStdX
+* freqBodyGyroStdY
+* freqBodyGyroStdZ
+* freqBodyAccMagMean
+* freqBodyAccMagStd
+* freqBodyAccJerkMagMean
+* freqBodyAccJerkMagStd
+* freqBodyGyroMagMean
+* freqBodyGyroMagStd
+* freqBodyGyroJerkMagMean
+* freqBodyGyroJerkMagStd
 
