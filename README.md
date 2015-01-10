@@ -1,4 +1,4 @@
-# Human-Activity-Recognition-Using-Smartphones-Data-Set
+# Human Activity Recognition Using Smartphones Data Set
 
 
 The purpose of this project is to demonstrate the ability to collect, work with, and clean a data set. The goal is to prepare tidy data that can be used for later analysis. 
@@ -11,7 +11,7 @@ The purpose of this project is to demonstrate the ability to collect, work with,
    - a **code book** that describes the variables, the data, and any transformations or work that it's performed to clean up the data.
    - the actual **averaged_dataset.txt** output file.
 
-## How to reproduce the **averaged_dataset** tidy data set given the raw data folder **UCI HAR Dataset**:
+## How to reproduce the 'averaged_dataset' tidy data set given the raw data folder **UCI HAR Dataset**:
 
  1. Make sure that you saved the raw data folder "UCI HAR Dataset" and the run_analysis.R script in your working directory.
  2. Open Rstudio and select the run_analysis.R.
